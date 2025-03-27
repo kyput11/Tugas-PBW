@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Cek Nilai</title>
+    <link rel="stylesheet" href="tugas4.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar1">
+                <div class="teks">
+                    <p>Selamat Datang di Cek Nilai</p>
+                </div>
+            </div>
+            <div class="navbar2">
+                <div class="item">
+                    <ul>
+                        <li><a href="">Beranda</a></li>
+                        <li><a href="">Tentang</a></li>
+                        <li><a href="">Layanan</a></li>
+                        <li><a href="">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="leftbar">
+                <div class="inleftbar">
+                    <h2>Formulir Cek Nilai</h2>
+                    <p id="silahkan">Silakan masukkan NIM dan Nilai untuk mengetahui huruf mutu.</p>
+                    <form action="" method="post">
+                        <label for="nim">NIM:</label>
+                        <input type="text" id="nim" name="nim" placeholder="Masukkan NIM" oninput="hanyaAngka(this)" required>
+
+                        <label for="nilai">Nilai:</label>
+                        <input type="text" id="nilai" name="nilai" placeholder="Masukkan Nilai (0 - 100)" oninput="hanyaAngka(this)" required>
+
+                        <button type="button" class="btn" onclick="cekHurufMutu()">Cek Nilai</button>
+
+                        <p id="hasil"></p>
+                    </form>
+                </div>
+            </div>
+            <div class="rightbar">
+                <div class="inrightbar">
+                    <h2>Informasi</h2>
+                    <p>Masukkan nilai antara 0 - 100 untuk mengetahui huruf mutu sesuai skala berikut:</p>
+                    <ul>
+                        <li>80 - 100 → A</li>
+                        <li>70 - 79 → B</li>
+                        <li>60 - 69 → C</li>
+                        <li>50 - 59 → D</li>
+                        <li>0 - 49 → E</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function hanyaAngka(input) {
+            input.value = input.value.replace(/[^0-9]/g, ''); // Hanya angka yang bisa dimasukkan
+        }
+
+        function cekHurufMutu() {
+            let nim = document.getElementById("nim").value.trim();
+            let nilai = document.getElementById("nilai").value.trim();
+            let hasil = document.getElementById("hasil");
+
+            let nilaiAngka = parseInt(nilai);
+
+            if (nim === "" || nilai === "") {
+                hasil.innerHTML = "<span class='error'>Harap masukkan NIM dan nilai!</span>";
+                return;
+            }
+
+            if (isNaN(nilaiAngka) || nilaiAngka < 0 || nilaiAngka > 100) {
+                hasil.innerHTML = "<span class='error'>Nilai tidak valid!</span>";
+                return;
+            }
+
+            let hurufMutu;
+            if (nilaiAngka >= 80) {
+                hurufMutu = "A";
+            } else if (nilaiAngka >= 70) {
+                hurufMutu = "B";
+            } else if (nilaiAngka >= 60) {
+                hurufMutu = "C";
+            } else if (nilaiAngka >= 50) {
+                hurufMutu = "D";
+            } else {
+                hurufMutu = "E";
+            }
+
+            hasil.innerHTML = `<p class='result'>NIM: <b>${nim}</b><br>Huruf Mutu: <b>${hurufMutu}</b></p>`;
+        }
+    </script>
+</body>
+</html>
