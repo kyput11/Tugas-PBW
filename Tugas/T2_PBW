@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendaftaran</title>
+</head>
+<body>
+    <form>
+        <p>Nama: <input type="text" name="nama" required></p>
+        <p>Email: <input type="email" name="email" required></p>
+
+        <p>Jenis Kelamin:
+            <label><input type="radio" name="jenis_kelamin" value="Laki-laki"> Laki-laki</label>
+            <label><input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan</label>
+        </p>
+
+        <p>Hobi:
+            <label><input type="radio" name="hobi" value="Musik"> Musik</label>
+            <label><input type="radio" name="hobi" value="Olahraga"> Olahraga</label>
+        </p>
+
+        <p>Pilihan Kota:
+            <select name="kota">
+                <option value="Jakarta">Jakarta</option>
+                <option value="Bogor">Bogor</option>
+                <option value="Bekasi">Bekasi</option>
+                <option value="Cikarang">Cikarang</option>
+            </select>
+        </p>
+
+        <p>Upload Foto:
+            <input type="file" id="file" name="foto">
+        </p>
+
+        <p><button type="submit">Submit</button></p>
+    </form>
+</body>
+</html>
